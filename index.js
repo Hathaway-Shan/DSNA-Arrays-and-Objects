@@ -92,7 +92,17 @@ export const getBrandNames = (props) => {
 
 // INPUT: brands from data.js
 // OUTPUT: total number of sneaker types across all brands (14)
-export const totalSneakerCount = () => {}
+export const totalSneakerCount = (brands) => {
+  // Object.keys(brands) => ['Nike', 'Puma', 'Adidas']
+  // Object.values(brands) => [{}, {}, {}]
+  // Object.entries(brands) => [['Nike', {}], ['Puma', {}], ['Adidas', []]]
+
+  let sum = 0
+  for (const brand of Object.values(brands)) {
+    sum += brand.shoes.length
+  }
+  return sum
+}
 
 // INPUT: An object
 // OUTPUT: An array with key value pairs converted to arrays
@@ -101,6 +111,25 @@ export const totalSneakerCount = () => {}
 // convertToArray({}) => []
 // Source: https://edabit.com/challenge/pPNAs5PvB3WvnDwDM
 
-export const convertToArray = () => {}
+// Option 1
+export const convertToArray = (object) => Object.entries(object)
 
-//
+// Option 2
+// export const convertToArray = (object) => {
+//   const entries = []
+//   for (const key in object) {
+//     entries.push([key, object[key]])
+//   }
+//   return entries
+// }
+
+// Option 3
+// export const convertToArray = (object) => {
+//   const keys = Object.keys(object)
+//   const values = Object.values(object)
+//   const entries = []
+//   for (let i = 0; i < values.length; i++) {
+//     entries[i] = [keys[i], values[i]]
+//   }
+//   return entries
+// }
